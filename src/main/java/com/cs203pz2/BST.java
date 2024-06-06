@@ -113,4 +113,52 @@ public class BST {
         }
     }
 
+    public Node getRoot() {
+        return this.root;
+    }
+
+    public void preorder() {
+        preorderRec(this.root);
+    }
+
+    private void preorderRec(Node root) {
+        if (root != null) {
+            System.out.print(root.data + " ");
+            preorderRec(root.left);
+            preorderRec(root.right);
+        }
+    }
+
+    public void postorder() {
+        postorderRec(this.root);
+    }
+
+    private void postorderRec(Node root) {
+        if (root != null) {
+            postorderRec(root.left);
+            postorderRec(root.right);
+            System.out.print(root.data + " ");
+        }
+    }
+
+    public void inorder() {
+        inorderRec(this.root);
+    }
+
+    private void inorderRec(Node root) {
+        if (root != null) {
+            inorderRec(root.left);
+            System.out.print(root.data + " ");
+            inorderRec(root.right);
+        }
+    }
+
+    public void order() {
+        System.out.println("Inorder:");
+        inorder();
+        System.out.println("\nPostorder:");
+        postorder();
+        System.out.println("\nPreorder:");
+        preorder();
+    }
 }

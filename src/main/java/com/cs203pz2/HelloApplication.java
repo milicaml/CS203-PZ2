@@ -70,6 +70,8 @@ public class HelloApplication extends Application {
             alert.showAndWait();
         });
 
+        tree.order();
+
         Scene scene = new Scene(root, WINDOW_WIDTH, WINDOW_HEIGHT);
         stage.setTitle("Hello!");
         stage.setScene(scene);
