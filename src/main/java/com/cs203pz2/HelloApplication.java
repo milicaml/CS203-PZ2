@@ -2,8 +2,7 @@ package com.cs203pz2;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -60,7 +59,15 @@ public class HelloApplication extends Application {
             tree.drawTree(content);
         });
         searchButton.setOnAction(e -> {
-            tree.animatedSearch(content, Integer.parseInt(keyField.getText()));
+            if (tree.search(Integer.parseInt(keyField.getText()))) {
+                tree.animatedSearch(content, Integer.parseInt(keyField.getText()));
+                return;
+            }
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information");
+            alert.setHeaderText(null);
+            alert.setContentText("Value not found");
+            alert.showAndWait();
         });
 
         Scene scene = new Scene(root, WINDOW_WIDTH, WINDOW_HEIGHT);

@@ -2,9 +2,6 @@ package com.cs203pz2;
 
 import javafx.animation.FillTransition;
 import javafx.animation.SequentialTransition;
-import javafx.animation.StrokeTransition;
-import javafx.scene.DepthTest;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -63,6 +60,22 @@ public class BST {
 
             drawTreeRec(content, root.left, x - hGap, y + 50, hGap / 2);
             drawTreeRec(content, root.right, x + hGap, y + 50, hGap / 2);
+        }
+    }
+
+    public boolean search(int key) {
+        return searchRec(this.root, key);
+    }
+
+    private boolean searchRec(Node root, int key) {
+        if (root == null) {
+            return false;
+        } else if (root.data == key) {
+            return true;
+        } else if (root.data > key) {
+            return searchRec(root.left, key);
+        } else {
+            return searchRec(root.right, key);
         }
     }
 
