@@ -1,5 +1,6 @@
 package com.cs203pz2.bst;
 
+@SuppressWarnings("unused")
 public class BST {
     protected Node root;
 

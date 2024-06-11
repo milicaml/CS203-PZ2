@@ -10,6 +10,7 @@ import javafx.scene.shape.Line;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 
+@SuppressWarnings("unused")
 public class BSTPane extends Pane {
     private BST bst;
 
