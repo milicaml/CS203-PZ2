@@ -1,5 +1,7 @@
 package com.cs203pz2;
 
+import com.cs203pz2.bst.BST;
+import com.cs203pz2.bst.BSTPane;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -8,7 +10,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -27,19 +28,26 @@ public class HelloApplication extends Application {
     public void start(Stage stage) throws IOException {
         BorderPane root = new BorderPane();
 
-        Pane content = new Pane();
+        BSTPane content = new BSTPane();
         root.setCenter(content);
 
         BST tree = new BST();
 
+        tree.insert(25);
+        tree.insert(20);
+        tree.insert(36);
         tree.insert(10);
+        tree.insert(22);
+        tree.insert(30);
+        tree.insert(40);
         tree.insert(5);
-        tree.insert(15);
-        tree.insert(3);
-        tree.insert(7);
         tree.insert(12);
-        tree.insert(17);
-        tree.drawTree(content);
+        tree.insert(28);
+        tree.insert(38);
+        tree.insert(48);
+
+        content.setBst(tree);
+        content.drawTree();
 
         Button addButton = new Button("Add");
         Label addLabel = new Label("Enter a node");
@@ -56,11 +64,11 @@ public class HelloApplication extends Application {
 
         addButton.setOnAction(e -> {
             tree.insert(Integer.parseInt(valueField.getText()));
-            tree.drawTree(content);
+            content.drawTree();
         });
         searchButton.setOnAction(e -> {
             if (tree.search(Integer.parseInt(keyField.getText()))) {
-                tree.animatedSearch(content, Integer.parseInt(keyField.getText()));
+                content.animatedSearch(Integer.parseInt(keyField.getText()));
                 return;
             }
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
